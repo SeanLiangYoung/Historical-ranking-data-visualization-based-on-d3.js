@@ -225,3 +225,8 @@ input {
 .A {
     fill: #CF9237
 }
+.control {
+    right: 20px;
+    position: absolute;
+    padding: 40px;
+}

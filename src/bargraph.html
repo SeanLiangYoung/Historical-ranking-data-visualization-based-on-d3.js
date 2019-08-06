@@ -13,13 +13,18 @@
     <meta name="viewport" content="width=device-width">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <title>动态排名数据可视化 ver1.7 By Jannchie</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>动态排名数据可视化</title>
 </head>
 
 <body>
     <center>
         <input type="file" id="inputfile" name="fileContent">
-        <svg width="1900" height="1020"></svg>
+        <div class="control">
+            <button type="button" class="btn btn-primary btn-lg" onclick="pause = true">暂停</button>
+            <button type="button" class="btn btn-default btn-lg" onclick="pause = false">启动</button>
+        </div>
+        <svg width="1900" height="930"></svg>
         <script src="config.js"></script>
         <script src="imgs.js"></script>
         <script src="color_ranges.js"></script>

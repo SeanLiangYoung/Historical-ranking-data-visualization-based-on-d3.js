@@ -8,9 +8,10 @@
 
 // import * as d3 from 'd3';
 // require("./stylesheet.css");
+  var pause = true
 
 $("#inputfile").change(function () {
-  $("#inputfile").attr("hidden", true);
+  $("#inputfile").hide();
   var r = new FileReader();
   r.readAsText(this.files[0], config.encoding);
   r.onload = function () {
@@ -559,7 +560,8 @@ function draw(data) {
       .duration(2490 * interval_time)
       .text(function (d) {
         if (use_type_info) {
-          return d[divide_by] + "-" + d.name;
+          // return d[divide_by] + "-" + d.name;
+          return d[divide_by];
         }
         return d.name;
       })
@@ -686,7 +688,8 @@ function draw(data) {
       .select(".barInfo")
       .text(function (d) {
         if (use_type_info) {
-          return d[divide_by] + "-" + d.name;
+          // return d[divide_by] + "-" + d.name;
+          return d[divide_by];
         }
         return d.name;
       })
@@ -843,17 +846,19 @@ function draw(data) {
   var p = config.wait;
   var update_rate = config.update_rate;
   var inter = setInterval(function next() {
-    // 空过p回合
-    while (p) {
-      p -= 1;
-      return;
-    }
-    currentdate = time[i];
-    getCurrentData(time[i]);
-    i++;
+    if( !pause ) {
+      // 空过p回合
+      while (p) {
+        p -= 1;
+        return;
+      }
+      currentdate = time[i];
+      getCurrentData(time[i]);
+      i++;
 
-    if (i >= time.length) {
-      window.clearInterval(inter);
+      if (i >= time.length) {
+        window.clearInterval(inter);
+      }
     }
   }, baseTime * interval_time);
   // setInterval(() => {
